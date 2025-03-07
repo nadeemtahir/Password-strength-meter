@@ -2,7 +2,6 @@ import streamlit as st
 import re
 import random
 import string
-import pyperclip
 
 # Initialize session state for password history
 if "password_history" not in st.session_state:
@@ -140,9 +139,6 @@ if st.button("Generate Password"):
     new_password = generate_password(length, include_specials)
     st.session_state.password_history.append(new_password)
     st.markdown(f'<div class="password-box">{new_password}</div>', unsafe_allow_html=True)
-    st.success("✅ Password generated! Click below to copy it.")
-    if st.button("📋 Copy Password"):
-        pyperclip.copy(new_password)
-        st.toast("✅ Password copied to clipboard!", icon="📋")
+    st.success("✅ Password generated!")
 
 st.markdown('</div>', unsafe_allow_html=True)
